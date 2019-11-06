@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: chatinServer.Server
+Class-Path: lib/ojdbc6.jar
+

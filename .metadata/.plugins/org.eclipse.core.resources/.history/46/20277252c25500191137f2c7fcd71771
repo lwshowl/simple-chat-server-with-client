@@ -1,0 +1,120 @@
+package chatinServer;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SendFile implements Runnable {
+	
+	private static String target;
+	private static String filename;
+	Socket targetSocket;
+
+	
+	SendFile(String target,String filename)
+	{
+		SendFile.target=target;
+
+		SendFile.filename=filename;
+	}
+	
+	
+    @Override
+    public void run() {
+    	
+    	 int length = 0;
+         byte[] sendByte = null;
+
+         DataOutputStream dout = null;
+         FileInputStream fin = null;
+         try {
+           try {
+        	   ServerSocket ss = new ServerSocket(8086);
+        	   System.out.println("开始监听发文件");
+        	   Socket targetSocket = ss.accept();
+        	   System.out.println("收到连接");
+        		// TODO Auto-generated method stub
+       	    Socket toSocket = null;
+   	        Socket s = null;
+   	        BufferedInputStream in = null;
+   	        FileOutputStream out = null;
+
+   	        // 永不停歇地运行
+
+   	            // 注意：此处需要和客户端保持一致
+   	            byte[] buffer = new byte[1024];
+   	            String fileName = null;
+   	            try {
+   	                s = ss.accept();
+   	                in = new BufferedInputStream(s.getInputStream());
+   	                // 取得文件名
+   	                in.read(buffer, 0, buffer.length);
+   	                fileName = new String(buffer).trim();
+   	                // 若为测试信息
+   	                if (fileName.equals("test message")) {
+   	                    System.out.println("接收到测试消息!");
+   	                }
+   	                // 定义文件流
+   	                out = new FileOutputStream(
+   	                        new File(path + new SimpleDateFormat("yyyymmddhhmmss").format(new Date()) + fromUser+toUser+fileName));
+   	                out.flush();
+   	                buffer = new byte[1024];
+   	                // 写文件内容
+   	                int count = 0;
+   	                while ((count = in.read(buffer, 0, buffer.length)) > 0) {
+   	                    out.write(buffer, 0, count);
+   	                    out.flush();
+   	                    buffer = new byte[1024];
+   	                }
+   	                System.out.println("接收到文件" + fileName);
+   	                
+   	                
+   	            	toSocket =StringSocketMap.map.get(toUser);
+   					
+   							OutputStreamWriter outSW = new OutputStreamWriter(toSocket.getOutputStream(), "UTF-8");
+   							BufferedWriter bw = new BufferedWriter(outSW);
+   							bw.write("File"+","+ new SimpleDateFormat("yyyymmddhhmmss").format(new Date()) + fromUser+toUser+fileName+","+fromUser);//向客户端反馈消息，加上分行符以便客户端接收
+   							bw.flush();
+   							
+   							System.out.println("消息已发送"+"File"+","+new SimpleDateFormat("yyyymmddhhmmss").format(new Date()) + fromUser+toUser+fileName+","+fromUser);
+   							ss.close();
+
+   	                
+   	                
+   	                	                
+   	            } catch (Exception ex) {
+   	                System.out.println("传输异常");
+
+   	                ex.printStackTrace();
+   	            } finally {
+   	                try {
+   	                    if (out != null) {
+   	                        out.close();
+   	                    }
+   	                    if (in != null) {
+   	                        in.close();
+   	                    }
+   	                    if (s != null) {
+   	                        s.close();
+   	                    }
+   	                } catch (Exception ex) {
+   	                    ex.printStackTrace();
+   	                    System.out.println("接收文件" + fileName + "失败" + ex);
+   	                }
+   	            }
+   	        
+   	    }
+   		
+
+   

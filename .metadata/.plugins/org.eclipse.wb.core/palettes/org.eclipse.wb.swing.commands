@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+	<moveEntry
+		id="org.eclipse.wb.swing.containers javax.swing.JDesktopPane"
+		category="org.eclipse.wb.swing.layouts"/>
+</commands>

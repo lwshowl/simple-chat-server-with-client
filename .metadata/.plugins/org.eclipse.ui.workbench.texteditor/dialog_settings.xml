@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="&#x09;&#x09;//找到目标socket 并发送" key="selection"/>
+		<list key="findhistory">
+			<item value="&#x09;&#x09;//找到目标socket 并发送"/>
+			<item value="&#x09;&#x09;for(Socket ss: Server.list )"/>
+		</list>
+	</section>
+</section>

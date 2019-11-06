@@ -5,9 +5,9 @@ using Oracle Data base , or you can modify that very easily
 
 tables are in the client repo
 
-register is not available you may implement that yourself, or you can manually add account and password to the tables
+register is not available (you may implement that yourself), or you can manually add account and password to the tables
 
-and most SIGNIFICANTLY add a buddy pair if you want to add a buddy 
+and most SIGNIFICANTLY add a buddy pair to the table if you want to add a buddy 
 
 like this:
 

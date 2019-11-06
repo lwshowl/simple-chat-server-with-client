@@ -11,6 +11,8 @@ and most SIGNIFICANTLY add a buddy pair to the table if you want to add a buddy
 
 like this:
 
-insert (account1,account2) & insert(account2,account1)
+insert (account1,account2) & insert (account2,account1)
+
+it still has several bugs dealing the logging messages,you can fix that if you are interested
 
 client @ https://github.com/lwshowl/WPF-chat-client-with-server

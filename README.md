@@ -9,9 +9,7 @@ register is not available (you may implement that yourself), or you can manually
 
 table
 
-and most SIGNIFICANTLY add a buddy pair to the table if you want to add a buddy 
-
-like this:
+and most significantly ADD A BUDDY PAIR TO THE 'BUDDY' TABLE if you want to add a buddy as follows
 
 insert (account1,account2) & insert (account2,account1)
 

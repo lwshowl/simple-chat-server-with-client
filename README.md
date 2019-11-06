@@ -5,7 +5,7 @@ using Oracle data base , or you can modify that very easily
 
 tables are in the client repo
 
-register is not available (you may implement that yourself), or you can manually add account with a password to the USER 
+register is not available (you may implement that yourself),or you can manually add an account with a password to the USER 
 
 table
 

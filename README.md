@@ -9,9 +9,11 @@ register is not available (you may implement that yourself),or you can manually 
 
 'USER' table
 
-and most significantly ADD A BUDDY PAIR TO THE 'BUDDY' TABLE if you want to add a buddy as follows
+and most significantly ADD A BUDDY PAIR TO THE 'BUDDY' TABLE if you want to add a buddy
 
-insert (account1,account2) & insert (account2,account1)
+insert like this:
+
+insert (account1,account2) into 'BUDDY' && insert (account2,account1) into 'BUDDY'
 
 it still has several bugs dealing with the logging messages,you can fix that if you are interested
 
